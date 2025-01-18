@@ -1,5 +1,5 @@
 import time
-from environment import CreateLevel1, Map, CreateLevel2, CreateLevel3
+from environment import create_level
 from moving import DynamicPathfindingAgent
 from search import minMax_search, Astar_search
 from utils import is_path_safe, is_valid_position, manhattan_distance
@@ -43,10 +43,7 @@ def run_agent(env, game_map):
             print(f"\nPosizione corrente eroe: {new_pos}")
             print(f"Posizione obiettivo: {goal_pos}")
             print(f"Posizione corrente mostro: {monster_pos}")
-            # Controlla se abbiamo raggiunto l'obiettivo
-            # new_pos = agent.normalize_coordinates(game_map.get_player_location())
 
-            # if new_pos == agent.normalize_coordinates(goal_pos):
             if new_pos == goal_pos:
                 print("Obiettivo raggiunto!")
                 break
@@ -60,7 +57,7 @@ def run_agent(env, game_map):
 
 # Esempio di utilizzo
 if __name__ == "__main__":
-    game_map, env = CreateLevel2()
+    game_map, env = create_level(11,11,2,(10,0),(2,0),(0,0))
 
     total_reward = run_agent(env, game_map)
     print(f"Reward totale: {total_reward}")

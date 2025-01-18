@@ -6,7 +6,6 @@ directions = [
 def manhattan_distance(start, goal):
     x = abs(start[0] - goal[0])
     y = abs(start[1] - goal[1])
-    #return  max(x,y) #considera la distanza diagonale
     return x+y
 
 def normalize_coordinates(pos):

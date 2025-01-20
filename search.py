@@ -1,10 +1,9 @@
 import heapq
-from collections import deque
 from strategy import calculate_combined_heuristic
-from utils import directions, forbidden_cells, manhattan_distance
+from utils import directions, forbidden_cells
 
 
-def get_successors(current_pos, monster_pos, chars_map):
+def get_successors(current_pos, chars_map):
     valid_successors = []
 
     try:
@@ -74,7 +73,6 @@ def minMax_search(chars_map, hero_pos, monster_pos, goal_pos, max_depth=3):
     return path
 
 def minimax(pos, goal_pos, monster_pos, depth, alpha, beta, is_max, chars_map):
-    """Implementa MinMax con alpha-beta pruning."""
     if depth == 0:
         # evaluate state
         return calculate_combined_heuristic(pos, goal_pos, chars_map, monster_pos)
@@ -115,7 +113,6 @@ def minimax(pos, goal_pos, monster_pos, depth, alpha, beta, is_max, chars_map):
         return min_eval
 
 def get_monster_moves(monster_pos, chars_map):
-    """Restituisce le possibili mosse del mostro."""
     moves = []
     x, y = monster_pos
     directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # 4-direzioni

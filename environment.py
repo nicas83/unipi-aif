@@ -11,24 +11,6 @@ class Map:
         self.goal_position=None
         self.initialize_goal_position()
 
-    def get_map_image(self):
-        # Rimuovi il bordo nero
-        image = self.__state['pixel']
-
-        rows = np.any(image != [0, 0, 0], axis=2).any(axis=1)
-        cols = np.any(image != [0, 0, 0], axis=2).any(axis=0)
-
-        image_without_borders = image[rows][:, cols, :]
-
-        return image_without_borders
-
-    def view_map(self):
-        # Ottieni l'immagine della mappa
-        image = self.get_map_image()
-
-        # Mostra la mappa
-        plt.imshow(image)
-        plt.show()
 
     def get_position_symbol(self, x, y):
         return chr(self.__state["chars"][x][y])
